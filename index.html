@@ -112,10 +112,14 @@
       }
       .ad-list .ad-item .ad-info {
         padding: 15px;
+        position: relative;
       }
       .ad-list .ad-item .ad-info h3 {
         margin: 0 0 10px;
         font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
       .ad-list .ad-item .ad-info .keywords {
         display: flex;
@@ -193,15 +197,13 @@
         background-color: #ff5733;
       }
       .ad-list .ad-item .heart-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
         background: none;
         border: none;
         cursor: pointer;
         font-size: 24px;
         color: #000;
         transition: color 0.3s;
+        margin-left: auto;
       }
       .ad-list .ad-item .heart-btn.active {
         color: #e74c3c;
@@ -649,7 +651,9 @@
           adItem.innerHTML = `
                     <img src="${ad.imageUrl}" alt="${ad.name} 이미지">
                     <div class="ad-info">
-                        <h3>${ad.name}</h3>
+                        <h3>${ad.name}<button class="heart-btn" data-ad="${
+            ad.name
+          }">❤</button></h3>
                         <p>평점: ${'⭐️'.repeat(ad.rating)} | 리뷰: ${
             Math.floor(Math.random() * 10) + 1
           } | 예산: 협의</p>
@@ -661,8 +665,7 @@
                               )
                               .join('')}
                         </div>
-                    </div>
-                    <button class="heart-btn" data-ad="${ad.name}">❤</button>`;
+                    </div>`;
           adList.appendChild(adItem);
         });
 
