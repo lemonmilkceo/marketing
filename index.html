@@ -487,108 +487,126 @@
             link: 'http://shortt.kr',
             rating: 5,
             keywords: ['창의적', '전략적', '광범위'],
+            imageUrl: 'image1.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '윗유',
             link: 'https://witu.co.kr/',
             rating: 5,
             keywords: ['효율적', '혁신적', '전문적'],
+            imageUrl: 'image2.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '숏츠캐스트',
             link: 'https://www.shortscast.co.kr/',
             rating: 5,
             keywords: ['독창적', '트렌디', '대중적'],
+            imageUrl: 'image3.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '순이엔티',
             link: 'https://www.soon-ent.co.kr/',
             rating: 4,
             keywords: ['경험많음', '다양성', '고객중심'],
+            imageUrl: 'image4.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '팀스완',
             link: 'https://teamswan.co.kr/',
             rating: 4,
             keywords: ['독창적', '유연성', '고효율'],
+            imageUrl: 'image5.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '모리엔티드',
             link: 'https://moriented.co.kr/',
             rating: 4,
             keywords: ['전문적', '신뢰성', '맞춤형'],
+            imageUrl: 'image6.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '숏폼쉐어',
             link: 'https://shortformshare.com/bizintro',
             rating: 4,
             keywords: ['다양성', '창의적', '포괄적'],
+            imageUrl: 'image7.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '찰나',
             link: 'https://charlla.io/about',
             rating: 4,
             keywords: ['신뢰성', '혁신적', '고객중심'],
+            imageUrl: 'image8.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '숏만연구소',
             link: 'https://www.short10000.com/',
             rating: 4,
             keywords: ['연구기반', '데이터중심', '고효율'],
+            imageUrl: 'image9.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '시나브로스튜디오',
             link: 'https://www.sinabrostudio.com/',
             rating: 4,
             keywords: ['독창적', '트렌디', '대중적'],
+            imageUrl: 'image10.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '피아이코퍼레이션',
             link: 'http://www.picorp.co.kr/',
             rating: 4,
             keywords: ['전문적', '신뢰성', '고효율'],
+            imageUrl: 'image11.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '위캐리',
             link: 'https://wecarrycorp.com/',
             rating: 4,
             keywords: ['독창적', '혁신적', '유연성'],
+            imageUrl: 'image12.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '원네이션',
             link: 'http://www.with1nation.com/',
             rating: 4,
             keywords: ['신뢰성', '경험많음', '고효율'],
+            imageUrl: 'image13.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '브이라우드',
             link: 'https://www.grooveplan.co.kr/vrowd',
             rating: 4,
             keywords: ['창의적', '전략적', '고효율'],
+            imageUrl: 'image14.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '르네프로덕션',
             link: 'https://www.renecreate.com/',
             rating: 4,
             keywords: ['전문적', '고효율', '유연성'],
+            imageUrl: 'image15.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '쇼츠웍스',
             link: 'https://shortsworks.io/',
             rating: 4,
             keywords: ['독창적', '고객중심', '다양성'],
+            imageUrl: 'image16.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '콘크리트파머스',
             link: 'https://ccfm-shortform.imweb.me/',
             rating: 4,
             keywords: ['창의적', '전략적', '광범위'],
+            imageUrl: 'image17.png', // 여기에 이미지 URL을 추가하세요
           },
           {
             name: '위리뷰',
             link: 'https://www.wereview.fun/',
             rating: 4,
             keywords: ['고객참여', '리뷰시스템', '광범위'],
+            imageUrl: 'image18.png', // 여기에 이미지 URL을 추가하세요
           },
         ];
 
@@ -629,9 +647,7 @@
           const adItem = document.createElement('div');
           adItem.className = 'ad-item';
           adItem.innerHTML = `
-                    <img src="https://via.placeholder.com/300" alt="${
-                      ad.name
-                    } 이미지">
+                    <img src="${ad.imageUrl}" alt="${ad.name} 이미지">
                     <div class="ad-info">
                         <h3>${ad.name}</h3>
                         <p>평점: ${'⭐️'.repeat(ad.rating)} | 리뷰: ${
