@@ -49,11 +49,15 @@
       }
       .header {
         display: flex;
-        justify-content: center; /* 수평 가운데 정렬 */
-        align-items: center; /* 수직 가운데 정렬 */
+        justify-content: center;
+        align-items: center;
         padding: 20px;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header .logo {
+        width: 200px;
+        margin-right: auto;
       }
       .header button,
       .header .dropdown button {
@@ -310,8 +314,8 @@
         background-color: #555;
       }
       .logo {
-        width: 150px;
-        margin: 0 20px; /* 왼쪽과 오른쪽 여백 */
+        width: 200px;
+        margin-bottom: 20px;
       }
       .popup {
         display: none;
@@ -470,16 +474,8 @@
           </button>
         </div>
       </div>
-      <!-- Premium Popup -->
-      <div class="popup" id="premiumPopup">
-        <p>
-          아직 서비스가 준비중입니다. 이메일 주소를 입력해주시면 베타서비스
-          이용권을 보내드립니다.
-        </p>
-        <input type="email" placeholder="이메일 주소" />
-        <button id="premiumPopupConfirm">확인</button>
-        <button class="cancel-btn">취소</button>
-      </div>
+      <!-- Premium Popup 제거 -->
+
       <!-- Join Button -->
       <button class="join-button" id="joinButton">광고대행사 입점신청</button>
     </div>
@@ -617,12 +613,7 @@
         const categoryDropdown = document.getElementById('categoryDropdown');
         const conceptDropdown = document.getElementById('conceptDropdown');
         const premiumButton = document.getElementById('premiumButton');
-        const premiumPopup = document.getElementById('premiumPopup');
-        const cancelPopupBtn = premiumPopup.querySelector('.cancel-btn');
         const joinButton = document.getElementById('joinButton');
-        const premiumPopupConfirm = document.getElementById(
-          'premiumPopupConfirm'
-        );
         let likedAds = [];
         let concepts = {
           패션: ['스타일리쉬', '트렌디', '세련된'],
@@ -785,14 +776,9 @@
           });
         });
 
-        // Open premium popup
+        // Link premium button to URL
         premiumButton.addEventListener('click', () => {
-          premiumPopup.classList.add('active');
-        });
-
-        // Close premium popup
-        cancelPopupBtn.addEventListener('click', () => {
-          premiumPopup.classList.remove('active');
+          window.location.href = 'https://smore.im/form/wydRugHWYY';
         });
 
         // Floating request button handler
@@ -802,11 +788,6 @@
 
         // Join button handler
         joinButton.addEventListener('click', () => {
-          window.location.href = 'https://smore.im/form/wydRugHWYY';
-        });
-
-        // Premium popup confirm button handler
-        premiumPopupConfirm.addEventListener('click', () => {
           window.location.href = 'https://smore.im/form/wydRugHWYY';
         });
       });
