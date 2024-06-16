@@ -454,6 +454,28 @@
       <button class="join-button" id="joinButton">광고대행사 입점신청</button>
     </div>
     <script>
+      async function saveEmailToAirtable(email) {
+        const url =
+          'https://api.airtable.com/v0/appdU3QL7Hv3NBDm8/tblsceFQ1Bsausgkq';
+        const data = {
+          fields: {
+            Email: email,
+          },
+        };
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            Authorization:
+              'Bearer patPGW0rsn9N8XSq1.1381be6e06e9be947ea921d49ad2206cf2f3295d73e0be6dba7d573883e43608',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        return response.json();
+      }
+
       document.addEventListener('DOMContentLoaded', function () {
         const adData = [
           {
@@ -608,24 +630,24 @@
           const adItem = document.createElement('div');
           adItem.className = 'ad-item';
           adItem.innerHTML = `
-                  <img src="https://via.placeholder.com/300" alt="${
-                    ad.name
-                  } 이미지">
-                  <div class="ad-info">
-                      <h3>${ad.name}</h3>
-                      <p>평점: ${'⭐️'.repeat(ad.rating)} | 리뷰: ${
+                    <img src="https://via.placeholder.com/300" alt="${
+                      ad.name
+                    } 이미지">
+                    <div class="ad-info">
+                        <h3>${ad.name}</h3>
+                        <p>평점: ${'⭐️'.repeat(ad.rating)} | 리뷰: ${
             Math.floor(Math.random() * 10) + 1
           } | 예산: 협의</p>
-                      <div class="keywords">
-                          ${ad.keywords
-                            .map(
-                              (keyword) =>
-                                `<span class="keyword" data-keyword="${keyword}">${keyword}</span>`
-                            )
-                            .join('')}
-                      </div>
-                  </div>
-                  <button class="heart-btn" data-ad="${ad.name}">❤</button>`;
+                        <div class="keywords">
+                            ${ad.keywords
+                              .map(
+                                (keyword) =>
+                                  `<span class="keyword" data-keyword="${keyword}">${keyword}</span>`
+                              )
+                              .join('')}
+                        </div>
+                    </div>
+                    <button class="heart-btn" data-ad="${ad.name}">❤</button>`;
           adList.appendChild(adItem);
         });
 
@@ -776,34 +798,17 @@
         });
 
         // Premium popup confirm button handler
-        premiumPopupConfirm.addEventListener('click', () => {
+        premiumPopupConfirm.addEventListener('click', async () => {
           const email = premiumPopup.querySelector('input[type="email"]').value;
           if (email) {
-            const url =
-              'https://script.google.com/macros/s/AKfycby9Opwh9Z8q8WUzECyc99wMNt36Ay9moWow7ujOdZ9j9cRWXr-7JvbPhxoeHoVev8pj/exec'; // Google Apps Script 웹 앱 URL
-            const formData = new FormData();
-            formData.append('email', email);
-
-            fetch(url, {
-              method: 'POST',
-              body: new URLSearchParams(formData),
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                if (data.status === 'success') {
-                  alert(`베타 서비스 이용권이 ${email}으로 발송되었습니다.`);
-                  premiumPopup.classList.remove('active');
-                } else {
-                  alert('오류가 발생했습니다. 다시 시도해주세요.');
-                }
-              })
-              .catch((error) => {
-                console.error('Error:', error);
-                alert('오류가 발생했습니다. 다시 시도해주세요.');
-              });
+            try {
+              const result = await saveEmailToAirtable(email);
+              alert(`베타 서비스 이용권이 ${email}으로 발송되었습니다.`);
+              premiumPopup.classList.remove('active');
+            } catch (error) {
+              console.error('Error:', error);
+              alert('오류가 발생했습니다. 다시 시도해주세요.');
+            }
           } else {
             alert('이메일 주소를 입력해주세요.');
           }
