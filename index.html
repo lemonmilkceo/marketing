@@ -454,39 +454,6 @@
       <button class="join-button" id="joinButton">광고대행사 입점신청</button>
     </div>
     <script>
-      async function saveEmailToAirtable(email) {
-        const url =
-          'https://api.airtable.com/v0/appdU3QL7Hv3NBDm8/tblsceFQ1Bsausgkq';
-        const data = {
-          fields: {
-            email: email, // 필드 이름을 email로 변경
-          },
-        };
-
-        try {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-              Authorization: 'Bearer patPGW0rsn9N8XSq1',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          });
-
-          const result = await response.json();
-          console.log('Response:', result);
-
-          if (!response.ok) {
-            throw new Error(result.error.message);
-          }
-
-          return result;
-        } catch (error) {
-          console.error('Error:', error.message);
-          throw error;
-        }
-      }
-
       document.addEventListener('DOMContentLoaded', function () {
         const adData = [
           {
@@ -800,56 +767,18 @@
 
         // Floating request button handler
         floatingRequestButton.addEventListener('click', () => {
-          premiumPopup.classList.add('active');
+          window.location.href = 'https://smore.im/form/wydRugHWYY';
         });
 
         // Join button handler
         joinButton.addEventListener('click', () => {
-          alert('광고대행사 입점 신청 페이지로 이동합니다.');
+          window.location.href = 'https://smore.im/form/wydRugHWYY';
         });
 
         // Premium popup confirm button handler
         premiumPopupConfirm.addEventListener('click', () => {
-          const email = premiumPopup.querySelector('input[type="email"]').value;
-          if (email) {
-            sendEmailToAirtable(email); // 에어테이블로 이메일 전송 함수 호출
-          } else {
-            alert('이메일 주소를 입력해주세요.');
-          }
+          window.location.href = 'https://smore.im/form/wydRugHWYY';
         });
-
-        // 에어테이블로 이메일 전송하는 함수
-        function sendEmailToAirtable(email) {
-          const token = 'patPGW0rsn9N8XSq1';
-          const baseId = 'appdU3QL7Hv3NBDm8';
-          const tableName = 'Email';
-          const url = `https://api.airtable.com/v0/${baseId}/${tableName}`;
-
-          fetch(url, {
-            method: 'POST',
-            headers: {
-              Authorization: `Bearer ${token}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              fields: {
-                email: email,
-              },
-            }),
-          })
-            .then((response) => {
-              if (response.ok) {
-                alert(`베타 서비스 이용권이 ${email}으로 발송되었습니다.`);
-                premiumPopup.classList.remove('active');
-              } else {
-                alert('오류가 발생했습니다. 다시 시도해주세요.');
-              }
-            })
-            .catch((error) => {
-              console.error('Error:', error);
-              alert('오류가 발생했습니다. 다시 시도해주세요.');
-            });
-        }
       });
     </script>
   </body>
