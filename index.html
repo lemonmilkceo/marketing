@@ -779,7 +779,8 @@
         premiumPopupConfirm.addEventListener('click', () => {
           const email = premiumPopup.querySelector('input[type="email"]').value;
           if (email) {
-            const url = 'https://lemonmilkceo.github.io/marketing/'; // 여기에 웹 앱 URL을 입력하세요
+            const url =
+              'https://script.google.com/macros/s/AKfycbx8hQManmbQYQsqMOdXvnl3aj4B-LSkHCOeaHDZZbQ/dev'; // Google Apps Script 웹 앱 URL
             const formData = new FormData();
             formData.append('email', email);
             fetch(url, {
